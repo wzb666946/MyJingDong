@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/child_view"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="100dp"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:layout_width="80px"
+      android:layout_height="80px"
+      android:id="@+id/child_img"
+      />
+    <TextView
+        android:layout_width="80px"
+        android:layout_height="wrap_content"
+        android:id="@+id/child_text"
+        android:text="水果"
+        android:gravity="center_horizontal"/>
+</LinearLayout>
