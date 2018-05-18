@@ -1,6 +1,7 @@
 package com.example.com.myjingdong.my.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.com.myjingdong.R;
+import com.example.com.myjingdong.shopcart.ShopCartActivity;
+import com.example.com.myjingdong.utils.SharedPreferencesUtils;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 public class MyFragment extends Fragment implements View.OnClickListener {
 
-    private ImageView mImageView;
+    private SimpleDraweeView mImageView;
     /**
      * 登录/注册
      */
@@ -33,6 +39,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mLl;
     private ScrollView mSc;
     private View view;
+    private String myname=null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +53,16 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         initView(view);
         return view;
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1&&resultCode==2){
+            Bundle b=data.getExtras();
+            myname=b.getString("myname");
+        }
+    }
     public void initView(View view) {
-        mImageView = (ImageView) view.findViewById(R.id.imageView);
+        mImageView = (SimpleDraweeView) view.findViewById(R.id.imageView);
         mImageView.setOnClickListener(this);
         mDenglu = (TextView) view.findViewById(R.id.denglu);
         mDenglu.setOnClickListener(this);
@@ -67,6 +82,15 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         mLl.setOnClickListener(this);
         mSc = (ScrollView) view.findViewById(R.id.sc);
         mSc.setOnClickListener(this);
+        myname = (String) SharedPreferencesUtils.getParam(getContext(), "name", "");
+        if(myname==""){
+            mDenglu.setText("登录/注册");
+            Uri uri=Uri.parse(""+R.mipmap.user);
+            mImageView.setImageURI(uri);
+        }else{
+            mDenglu.setText(""+myname);
+            mImageView.setImageURI("http://img4.duitang.com/uploads/item/201305/02/20130502185029_EkKYh.jpeg");
+        }
     }
     @Override
     public void onClick(View v) {
@@ -77,7 +101,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.denglu:
                 Intent intent=new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
                 break;
             case R.id.ln:
 
@@ -95,7 +119,9 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "推荐", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.dingdan:
-                Toast.makeText(getActivity(), "订单", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(getActivity(), MakeSureOrderActivity.class);
+                startActivity(intent2);
+                //Toast.makeText(getActivity(), "订单", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll:
                 break;

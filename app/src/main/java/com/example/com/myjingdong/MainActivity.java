@@ -10,9 +10,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.com.myjingdong.R;
+import com.example.com.myjingdong.font.ui.FontFragment;
 import com.example.com.myjingdong.home.ui.HomeFragment;
 import com.example.com.myjingdong.my.ui.MyFragment;
 import com.example.com.myjingdong.myclass.ui.ClassFragment;
+import com.example.com.myjingdong.shopcart.ShopCartFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(new HomeFragment());
         list.add(new ClassFragment());
         list.add(new MyFragment());
+        list.add(new ShopCartFragment());
+        list.add(new FontFragment());
         myview=getSupportFragmentManager();
         myview.beginTransaction().replace(R.id.mymainview,list.get(0)).commit();
         //设置点击选择
@@ -56,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.tab_find:
                         //发现
-                        myview.beginTransaction().replace(R.id.mymainview,list.get(3)).commit();
+                        myview.beginTransaction().replace(R.id.mymainview,list.get(4)).commit();
                         break;
                     case R.id.tab_shopcar:
                         //购物车
-                        myview.beginTransaction().replace(R.id.mymainview,list.get(4)).commit();
+                        myview.beginTransaction().replace(R.id.mymainview,list.get(3)).commit();
                         break;
                     case R.id.tab_main:
                         //我的

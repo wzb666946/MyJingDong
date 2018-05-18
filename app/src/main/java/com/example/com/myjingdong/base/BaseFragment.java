@@ -16,15 +16,15 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends Fragment implements IBase,BaseContract.BaseView{
     @Inject
-    protected  T mPresensenter;
+    protected  T mPersenter;
     private Unbinder unbinder;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject();
         //绑定
-        if(mPresensenter!=null){
-            mPresensenter.attachView(this);
+        if(mPersenter!=null){
+            mPersenter.attachView(this);
         }
     }
 
@@ -32,8 +32,8 @@ public abstract class BaseFragment<T extends BaseContract.BasePresenter> extends
     public void onDestroy() {
         super.onDestroy();
         //解绑
-       if(mPresensenter!=null){
-           mPresensenter.detachView();
+       if(mPersenter!=null){
+           mPersenter.detachView();
        }
        if(unbinder!=null){
            unbinder.unbind();

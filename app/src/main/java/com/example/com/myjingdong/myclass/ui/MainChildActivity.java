@@ -120,6 +120,7 @@ public class MainChildActivity extends BaseActivaty<ClassPresenter> implements C
             public void OnItemClick(ChildBean.DataBean dataBean) {
                 Intent intent=new Intent(MainChildActivity.this,XqActivity.class);
                 intent.putExtra("bean", dataBean);
+                intent.putExtra("flag","1");
                 startActivity(intent);
             }
         });

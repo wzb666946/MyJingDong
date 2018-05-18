@@ -62,6 +62,7 @@ public class RegisterActivity extends BaseActivaty<LoginPresenter> implements Lo
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             Toast.makeText(RegisterActivity.this, "" + regbean.getMsg(), Toast.LENGTH_SHORT).show();
+            finish();
         } else {
             Toast.makeText(RegisterActivity.this, "" + regbean.getMsg(), Toast.LENGTH_SHORT).show();
         }

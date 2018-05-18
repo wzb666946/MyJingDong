@@ -107,7 +107,7 @@
                 android:layout_weight="1"
                 android:background="#FF8000"
                 android:gravity="center"
-                android:text="立即购买" />
+                android:text="购物车" />
 
             <TextView
                 android:id="@+id/xq_addcar"

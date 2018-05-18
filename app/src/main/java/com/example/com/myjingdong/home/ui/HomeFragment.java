@@ -80,8 +80,9 @@ public class HomeFragment extends BaseFragment<HomePagePresenter> implements Hom
         rvRecommendAdapter.setOnItemClickListener(new OnItemClickListenner() {
             @Override
             public void onItemClick(int position) {
-                Intent intent=new Intent(getActivity(),RecommendActivity.class);
-                intent.putExtra("url",adBean.getTuijian().getList().get(position).getDetailUrl());
+                Intent intent=new Intent(getActivity(),XqActivity.class);
+                intent.putExtra("bean",adBean.getTuijian().getList().get(position));
+                intent.putExtra("flag","0");
                 startActivity(intent);
             }
 
@@ -155,8 +156,8 @@ public class HomeFragment extends BaseFragment<HomePagePresenter> implements Hom
     }
 
     private void initData() {
-       mPresensenter.getAd();
-        mPresensenter.getCatagory();
+       mPersenter.getAd();
+        mPersenter.getCatagory();
     }
 
     @Override

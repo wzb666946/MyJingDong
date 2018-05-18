@@ -52,8 +52,8 @@ public class ClassFragment extends BaseFragment<ClassPresenter> implements Class
         //设置布局管理器
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(), 1, RecyclerView.VERTICAL, false);
         class_left.setLayoutManager(gridLayoutManager1);
-        mPresensenter.getCatagory();
-        mPresensenter.getClassChild(""+p);
+        mPersenter.getCatagory();
+        mPersenter.getClassChild(""+p);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class ClassFragment extends BaseFragment<ClassPresenter> implements Class
                 if(position==0){
                     position=p;
                 }
-                mPresensenter.getClassChild(""+position);
+                mPersenter.getClassChild(""+position);
             }
 
             @Override
