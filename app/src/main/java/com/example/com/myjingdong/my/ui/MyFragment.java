@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,48 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1&&resultCode==2){
             Bundle b=data.getExtras();
-            myname=b.getString("myname");
+            String p = b.getString("myname");
+            myname=p;
+            if(myname==null){
+                mDenglu.setText("登录/注册");
+                Uri uri=Uri.parse(""+R.mipmap.user);
+                mImageView.setImageURI(uri);
+            }else{
+                loginSuccess();
+            }
+        }else if(requestCode==1&&resultCode==3){
+            Bundle b=data.getExtras();
+            String p = b.getString("myname");
+            myname=p;
+            if(myname==null){
+                mDenglu.setText("登录/注册");
+                Uri uri=Uri.parse(""+R.mipmap.user);
+                mImageView.setImageURI(uri);
+            }else{
+                loginSuccess();
+            }
+        }else if(requestCode==1&&resultCode==4){
+            Bundle b=data.getExtras();
+            String p = b.getString("myname");
+            myname=p;
+            if(myname==null){
+                mDenglu.setText("登录/注册");
+                Uri uri=Uri.parse(""+R.mipmap.user);
+                mImageView.setImageURI(uri);
+                mImageView.setClickable(false);
+                mImageView.setFocusable(false);
+            }else{
+                loginSuccess();
+            }
+        }else if(requestCode==1&&resultCode==5){
+            Bundle b=data.getExtras();
+            String p = b.getString("tx");
+            String pp= (String) SharedPreferencesUtils.getParam(getContext(),"tx","");
+            Log.d("aaa",""+pp);
+            Uri uri=Uri.parse(""+pp);
+            mImageView.setImageURI(uri);
+            String myname = (String) SharedPreferencesUtils.getParam(getContext(), "name", "");
+            mDenglu.setText(""+myname);
         }
     }
     public void initView(View view) {
@@ -88,8 +130,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
             Uri uri=Uri.parse(""+R.mipmap.user);
             mImageView.setImageURI(uri);
         }else{
-            mDenglu.setText(""+myname);
-            mImageView.setImageURI("http://img4.duitang.com/uploads/item/201305/02/20130502185029_EkKYh.jpeg");
+            loginSuccess();
         }
     }
     @Override
@@ -101,6 +142,8 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.denglu:
                 Intent intent=new Intent(getActivity(),LoginActivity.class);
+                Bundle bundle=new Bundle();
+                intent.putExtras(bundle);
                 startActivityForResult(intent,1);
                 break;
             case R.id.ln:
@@ -129,5 +172,18 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
+    public  void  loginSuccess(){
+        String url = (String) SharedPreferencesUtils.getParam(getContext(), "iconUrl", "");
+        mDenglu.setText(""+myname);
+        mImageView.setImageURI(url);
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),UserInfoActivity.class);
+                Bundle bundle=new Bundle();
+                intent.putExtras(bundle);
+                startActivityForResult(intent,1);
+            }
+        });
+    }
 }

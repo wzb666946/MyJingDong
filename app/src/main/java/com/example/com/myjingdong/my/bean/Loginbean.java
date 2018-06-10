@@ -5,7 +5,11 @@ public class Loginbean {
     /**
      * msg : 登录成功
      * code : 0
-     * data : {"age":null,"appkey":"90534adcb9ecdc09","appsecret":"BF3BE212DDC0FB8D3C63195221D95C62","createtime":"2018-05-16T10:32:35","email":null,"fans":null,"follow":null,"gender":null,"icon":null,"latitude":null,"longitude":null,"mobile":"17600369054","money":null,"nickname":null,"password":"8F669074CAF5513351A2DE5CC22AC04C","praiseNum":null,"token":"B62A5871AA29A0370D6C4A3B2DB6B87C","uid":13933,"userId":null,"username":"17600369054"}
+     * data : {"age":null,"appkey":"07258a7bbfd8b132","appsecret":"E243E12B205A861F4BBC0492A373A36F",
+     * "createtime":"2018-05-08T09:34:26","email":null,"fans":null,"follow":null,"gender":null,"icon":"https://www
+     * .zhaoapi.cn/images/1525392292327header_crop.jpg","latitude":null,"longitude":null,"mobile":"18310830365",
+     * "money":null,"nickname":null,"password":"8F669074CAF5513351A2DE5CC22AC04C","praiseNum":null,
+     * "token":"5B5E60DC8960BA6DBCF3CBA638A1EC32","uid":1235,"userId":null,"username":"18310830365"}
      */
 
     private String msg;
@@ -39,25 +43,25 @@ public class Loginbean {
     public static class DataBean {
         /**
          * age : null
-         * appkey : 90534adcb9ecdc09
-         * appsecret : BF3BE212DDC0FB8D3C63195221D95C62
-         * createtime : 2018-05-16T10:32:35
+         * appkey : 07258a7bbfd8b132
+         * appsecret : E243E12B205A861F4BBC0492A373A36F
+         * createtime : 2018-05-08T09:34:26
          * email : null
          * fans : null
          * follow : null
          * gender : null
-         * icon : null
+         * icon : https://www.zhaoapi.cn/images/1525392292327header_crop.jpg
          * latitude : null
          * longitude : null
-         * mobile : 17600369054
+         * mobile : 18310830365
          * money : null
          * nickname : null
          * password : 8F669074CAF5513351A2DE5CC22AC04C
          * praiseNum : null
-         * token : B62A5871AA29A0370D6C4A3B2DB6B87C
-         * uid : 13933
+         * token : 5B5E60DC8960BA6DBCF3CBA638A1EC32
+         * uid : 1235
          * userId : null
-         * username : 17600369054
+         * username : 18310830365
          */
 
         private Object age;
@@ -68,7 +72,7 @@ public class Loginbean {
         private Object fans;
         private Object follow;
         private Object gender;
-        private Object icon;
+        private String icon;
         private Object latitude;
         private Object longitude;
         private String mobile;
@@ -145,11 +149,11 @@ public class Loginbean {
             this.gender = gender;
         }
 
-        public Object getIcon() {
+        public String getIcon() {
             return icon;
         }
 
-        public void setIcon(Object icon) {
+        public void setIcon(String icon) {
             this.icon = icon;
         }
 

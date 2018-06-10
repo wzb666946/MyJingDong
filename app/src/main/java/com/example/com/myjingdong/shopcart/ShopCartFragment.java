@@ -86,7 +86,7 @@ public class ShopCartFragment extends BaseFragment<ShopcartPresenter> implements
         mCbAll = (CheckBox) view.findViewById(R.id.cbAll);
         mTvMoney = (TextView) view.findViewById(R.id.tvMoney);
         mTvTotal = (TextView) view.findViewById(R.id.tvTotal);
-
+        mElv.setGroupIndicator(null);
         mCbAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

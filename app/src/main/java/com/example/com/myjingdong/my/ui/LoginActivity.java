@@ -3,6 +3,7 @@ package com.example.com.myjingdong.my.ui;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -114,9 +115,12 @@ public class LoginActivity extends BaseActivaty<LoginPresenter> implements View.
                 SharedPreferencesUtils.setParam(LoginActivity.this, "uid",  "");
                 SharedPreferencesUtils.setParam(LoginActivity.this, "name",  "");
                 SharedPreferencesUtils.setParam(LoginActivity.this, "iconUrl",  "");
-                SharedPreferencesUtils.setParam(LoginActivity.this, "token", "");
-                Intent intent1=new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent1);
+                Intent intent1=this.getIntent();
+                Bundle bundle=intent1.getExtras();
+                bundle.putString("myname",null);
+                this.setResult(3,intent1);
+
+                finish();
                 Toast.makeText(LoginActivity.this, "已经退出登录", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.wjmm:
@@ -127,17 +131,25 @@ public class LoginActivity extends BaseActivaty<LoginPresenter> implements View.
     @Override
     public void showLoginimges(Loginbean userBean) {
         if(userBean.getMsg().equals("登录成功")){
+            Log.d("odoaod",""+userBean.toString());
             Toast.makeText(LoginActivity.this, userBean.getMsg(), Toast.LENGTH_SHORT).show();
             SharedPreferencesUtils.setParam(LoginActivity.this, "uid", userBean.getData().getUid() + "");
             SharedPreferencesUtils.setParam(LoginActivity.this, "name", userBean.getData().getUsername() + "");
-            SharedPreferencesUtils.setParam(LoginActivity.this, "iconUrl", userBean.getData().getIcon() + "");
             SharedPreferencesUtils.setParam(LoginActivity.this, "token", userBean.getData().getToken() + "");
-            Intent intent=new Intent();
-            Bundle bundle=new Bundle();
-            bundle.putString("myname",""+userBean.getData().getUsername());
+            SharedPreferencesUtils.setParam(LoginActivity.this, "newname", userBean.getData().getNickname() + "");
+            SharedPreferencesUtils.setParam(LoginActivity.this, "iconUrl", userBean.getData().getIcon() + "");
+            Intent intent=this.getIntent();
+            Bundle bundle=intent.getExtras();
+            if(userBean.getData().getNickname()!=null){
+                bundle.putString("myname",""+userBean.getData().getNickname());
+            }else{
+                bundle.putString("myname",""+userBean.getData().getUsername());
+            }
             intent.putExtras(bundle);
-            setResult(2,intent);
+            this.setResult(2,intent);
             finish();
+        }else{
+
         }
 
     }

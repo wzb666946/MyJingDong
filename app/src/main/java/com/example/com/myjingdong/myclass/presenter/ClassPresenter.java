@@ -38,7 +38,9 @@ public class ClassPresenter extends BasePresenter<ClassContrace.View> implements
 
                     @Override
                     public void onNext(RightBean rightBean) {
-                        mView.getClassChildSuccess(rightBean);
+                        if(mView!=null){
+                            mView.getClassChildSuccess(rightBean);
+                        }
                     }
 
                     @Override

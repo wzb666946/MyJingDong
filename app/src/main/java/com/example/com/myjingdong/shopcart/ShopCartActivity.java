@@ -77,7 +77,7 @@ public class ShopCartActivity extends BaseActivaty<ShopcartPresenter> implements
         mCbAll = (CheckBox) findViewById(R.id.cbAll);
         mTvMoney = (TextView) findViewById(R.id.tvMoney);
         mTvTotal = (TextView) findViewById(R.id.tvTotal);
-
+        mElv.setGroupIndicator(null);
         mCbAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

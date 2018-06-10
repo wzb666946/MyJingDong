@@ -12,6 +12,8 @@ import com.example.com.myjingdong.my.net.AddrsApiService;
 import com.example.com.myjingdong.my.net.MyApi;
 import com.example.com.myjingdong.my.net.MyApiService;
 import com.example.com.myjingdong.my.net.MyInterceptor;
+import com.example.com.myjingdong.my.net.UpdateHeaderApi;
+import com.example.com.myjingdong.my.net.UpdateHeaderApiService;
 import com.example.com.myjingdong.myclass.net.ClassApi;
 import com.example.com.myjingdong.myclass.net.ClassApiService;
 import com.example.com.myjingdong.shopcart.net.CreateOrderApi;
@@ -157,5 +159,16 @@ public class HttpModule {
                 .build();
         CreateOrderApiService createOrderApiService = retrofit.create(CreateOrderApiService.class);
         return CreateOrderApi.getCreateOrderApi(createOrderApiService);
+    }
+    @Provides
+    UpdateHeaderApi provideUpdateHeaderApi(OkHttpClient.Builder builder) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BANNER_API)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        UpdateHeaderApiService updateHeaderApiService = retrofit.create(UpdateHeaderApiService.class);
+        return UpdateHeaderApi.getUpdateHeaderApi(updateHeaderApiService);
     }
 }

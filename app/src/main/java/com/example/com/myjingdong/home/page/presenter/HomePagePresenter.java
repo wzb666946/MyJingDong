@@ -35,7 +35,9 @@ public class HomePagePresenter extends BasePresenter<HomePageContract.View> impl
 
                     @Override
                     public void onNext(AdBean adBean) {
-                        mView.getAdSuccess(adBean);
+                       if(mView!=null){
+                           mView.getAdSuccess(adBean);
+                       }
                     }
 
                     @Override

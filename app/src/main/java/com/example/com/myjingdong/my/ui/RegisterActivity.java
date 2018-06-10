@@ -59,9 +59,6 @@ public class RegisterActivity extends BaseActivaty<LoginPresenter> implements Lo
     @Override
     public void showRegister(Regbean regbean) {
         if (regbean.getMsg().equals("注册成功")) {
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
-            Toast.makeText(RegisterActivity.this, "" + regbean.getMsg(), Toast.LENGTH_SHORT).show();
             finish();
         } else {
             Toast.makeText(RegisterActivity.this, "" + regbean.getMsg(), Toast.LENGTH_SHORT).show();

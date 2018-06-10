@@ -5,6 +5,7 @@ import com.example.com.myjingdong.module.HttpModule;
 import com.example.com.myjingdong.my.ui.LoginActivity;
 import com.example.com.myjingdong.my.ui.MakeSureOrderActivity;
 import com.example.com.myjingdong.my.ui.RegisterActivity;
+import com.example.com.myjingdong.my.ui.UserInfoActivity;
 import com.example.com.myjingdong.myclass.ui.ClassFragment;
 import com.example.com.myjingdong.myclass.ui.MainChildActivity;
 import com.example.com.myjingdong.myclass.ui.XqActivity;
@@ -24,4 +25,5 @@ public interface HttpComponent {
     void inject(MakeSureOrderActivity makeSureOrderActivity);
     void inject(XqActivity xqActivity);
     void inject(ShopCartFragment shopCartFragment);
+    void inject(UserInfoActivity userInfoActivity);
 }

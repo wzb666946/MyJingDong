@@ -177,7 +177,7 @@ public class XqActivity extends BaseActivaty<AddCartPresenter> implements View.O
                     //还未登录
                     //跳转到登录页面
                     Intent intent2 = new Intent(XqActivity.this, LoginActivity.class);
-                    startActivityForResult(intent2,1);
+                    startActivity(intent2);
                 } else {
                     //登录过了
                     String uid = (String) SharedPreferencesUtils.getParam(XqActivity.this, "uid", "");
